@@ -1,0 +1,27 @@
+.quote {
+	position: relative;
+	padding: 30px 55px;
+	line-height: 3.6rem;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+
+	@media (max-width: 768px) {
+		padding: 20px 35px;
+	}
+
+	@media (max-width: 425px) {
+		padding: 20px 15px 20px 25px;
+	}
+
+	&::before {
+		position: absolute;
+		content: "";
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 10px;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+		background-color: $red;
+	}
+}

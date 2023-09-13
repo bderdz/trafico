@@ -1,0 +1,23 @@
+.button {
+	background-color: $primary-red;
+	text-transform: uppercase;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: fit-content;
+
+	&-s {
+		padding: 20px 24px;
+		border-radius: 5px;
+		gap: 24px;
+		color: $white;
+
+		@media (max-width: 768px) {
+			padding: 16px 20px;
+		}
+
+		@media (max-width: 425px) {
+		}
+	}
+}

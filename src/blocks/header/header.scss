@@ -1,0 +1,82 @@
+.header {
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 100vw;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 76px;
+		padding-top: 40px;
+		font-weight: 700;
+		letter-spacing: 0.08rem;
+
+		@media (max-width: 1024px) {
+			gap: 50px;
+		}
+
+		@media (max-width: 768px) {
+			padding-top: 30px;
+			gap: 0;
+		}
+	}
+
+	&__nav {
+		margin-left: auto;
+
+		&-link {
+			color: $white;
+		}
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+
+	&__button {
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+}
+
+.burger {
+	display: none;
+	position: relative;
+	width: 26px;
+	height: 16px;
+
+	@media (max-width: 768px) {
+		display: flex;
+		align-items: center;
+	}
+
+	&__icon {
+		width: 100%;
+		height: 3px;
+		border-radius: 10px;
+		background: $white;
+
+		&::before,
+		&::after {
+			position: absolute;
+			content: "";
+			width: 100%;
+			height: 3px;
+			border-radius: 10px;
+			background: $white;
+			left: 0;
+		}
+
+		&::before {
+			top: 0;
+		}
+
+		&::after {
+			bottom: 0;
+		}
+	}
+}

@@ -6,29 +6,56 @@
 
 :root {
 	font-size: 10px;
+
+	@media (min-width: 1680px) {
+		font-size: 11px;
+	}
+
+	@media (max-width: 1024px) {
+		font-size: 9.5px;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 8.5px;
+	}
+	@media (max-width: 425px) {
+		font-size: 8px;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
 }
 
 body {
-	font-family: $font-rubik;
+	color: $text;
+	position: relative;
+	// background-color: gray;
+}
+
+section {
+	scroll-margin: 5rem;
 }
 
 .container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
 }
 
 /* 
 
 * Breakpoints for project
 
-@media (max-width: 1680px) {
+@media (min-width: 1680px) {
 }
-@media (max-width: 1400px) {
+@media (max-width: 1440px) {
 }
-@media (max-width: 1180px) {
-}
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
 }
 @media (max-width: 768px) {
 }
-@media (max-width: 428px) {	
+@media (max-width: 425px) {	
 }
+
 */

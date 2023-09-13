@@ -1,0 +1,22 @@
+.text {
+	font-family: $font-rubik;
+
+	&-xs {
+		font-size: 1.6rem;
+	}
+
+	&-s {
+		font-size: 1.8rem;
+	}
+
+	&-m {
+		font-weight: 400;
+		font-size: 2rem;
+	}
+
+	&-l {
+		font-family: $font-dm;
+		font-weight: 400;
+		font-size: 4.8rem;
+	}
+}

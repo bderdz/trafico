@@ -1,0 +1,22 @@
+.nav {
+	&__list {
+		display: flex;
+		gap: 100px;
+
+		@media (max-width: 1024px) {
+			gap: 50px;
+		}
+		@media (max-width: 768px) {
+		}
+		@media (max-width: 425px) {
+		}
+	}
+
+	&__item {
+	}
+
+	&__link {
+		text-transform: uppercase;
+		font-family: $font-rubik;
+	}
+}
