@@ -1,24 +1,26 @@
 "use strict";
 // Imports
-const { src, dest } = require("gulp");
-const gulp = require("gulp");
+import gulp from "gulp";
 
-const autoPrefixer = require("gulp-autoprefixer"),
-	cssBeautify = require("gulp-cssbeautify"),
-	rename = require("gulp-rename"),
-	sass = require("gulp-sass")(require("sass")),
-	cssnano = require("gulp-cssnano"),
-	uglify = require("gulp-uglify"),
-	rigger = require("gulp-rigger"),
-	plumber = require("gulp-plumber"),
-	imageMin = require("gulp-imagemin"),
-	del = require("del"),
-	notify = require("gulp-notify"),
-	fileInclude = require("gulp-file-include"),
-	groupMedia = require("gulp-group-css-media-queries"),
-	browserSync = require("browser-sync").create(),
-	bulk = require("gulp-sass-bulk-import"),
-	changed = require("gulp-changed");
+import autoPrefixer from "gulp-autoprefixer";
+import cssBeautify from "gulp-cssbeautify";
+import rename from "gulp-rename";
+import cssNano from "gulp-cssnano";
+import uglify from "gulp-uglify";
+import rigger from "gulp-rigger";
+import plumber from "gulp-plumber";
+import imageMin from "gulp-imagemin";
+import del from "del";
+import notify from "gulp-notify";
+import fileInclude from "gulp-file-include";
+import groupMedia from "gulp-group-css-media-queries";
+import browserSync from "browser-sync";
+import bulk from "gulp-sass-bulk-import";
+import changed from "gulp-changed";
+import gulpSass from "gulp-sass";
+import * as nodeSass from "sass";
+
+const sass = gulpSass(nodeSass);
 
 // 2 main directories
 const srcPath = "src/",
@@ -62,8 +64,9 @@ function server() {
 }
 
 //* HTML
-function html() {
-	return src(path.src.html)
+export function html() {
+	return gulp
+		.src(path.src.html)
 		.pipe(
 			plumber({
 				errorHandler: notify.onError((error) => ({
@@ -73,13 +76,14 @@ function html() {
 			})
 		)
 		.pipe(fileInclude())
-		.pipe(dest(path.build.html))
+		.pipe(gulp.dest(path.build.html))
 		.pipe(browserSync.stream());
 }
 
 //* CSS
-function css() {
-	return src(path.src.css, { allowEmpty: true })
+export function css() {
+	return gulp
+		.src(path.src.css, { allowEmpty: true })
 		.pipe(
 			plumber({
 				errorHandler: notify.onError((error) => ({
@@ -98,9 +102,9 @@ function css() {
 			})
 		)
 		.pipe(cssBeautify())
-		.pipe(dest(path.build.css))
+		.pipe(gulp.dest(path.build.css))
 		.pipe(
-			cssnano({
+			cssNano({
 				zindex: false,
 				discardComments: {
 					removeAll: true,
@@ -113,13 +117,14 @@ function css() {
 				extname: ".css",
 			})
 		)
-		.pipe(dest(path.build.css))
+		.pipe(gulp.dest(path.build.css))
 		.pipe(browserSync.stream());
 }
 
 //* JS
-function js() {
-	return src(path.src.js, { allowEmpty: true })
+export function js() {
+	return gulp
+		.src(path.src.js, { allowEmpty: true })
 		.pipe(
 			plumber({
 				errorHandler: notify.onError((error) => ({
@@ -129,7 +134,7 @@ function js() {
 			})
 		)
 		.pipe(rigger())
-		.pipe(dest(path.build.js))
+		.pipe(gulp.dest(path.build.js))
 		.pipe(uglify())
 		.pipe(
 			rename({
@@ -137,13 +142,14 @@ function js() {
 				extname: ".js",
 			})
 		)
-		.pipe(dest(path.build.js))
+		.pipe(gulp.dest(path.build.js))
 		.pipe(browserSync.stream());
 }
 
 //* IMG
-function images() {
-	return src(path.src.img)
+export function images() {
+	return gulp
+		.src(path.src.img)
 		.pipe(changed(path.build.img))
 		.pipe(
 			imageMin([
@@ -155,22 +161,25 @@ function images() {
 				}),
 			])
 		)
-		.pipe(dest(path.build.img))
+		.pipe(gulp.dest(path.build.img))
 		.pipe(browserSync.stream());
 }
 
 //* FONTS
-function fonts() {
-	return src(path.src.fonts).pipe(dest(path.build.fonts)).pipe(browserSync.stream());
+export function fonts() {
+	return gulp
+		.src(path.src.fonts)
+		.pipe(gulp.dest(path.build.fonts))
+		.pipe(browserSync.stream());
 }
 
 //* CLEAN Directory
-function clean() {
+export function clean() {
 	return del(path.clean);
 }
 
 //* WATCH task
-function watchFiles() {
+export function watchFiles() {
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css);
 	gulp.watch([path.watch.js], js);
@@ -183,11 +192,4 @@ const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
 const watch = gulp.parallel(build, server, watchFiles);
 
 //* Exports
-exports.html = html;
-exports.css = css;
-exports.js = js;
-exports.images = images;
-exports.fonts = fonts;
-exports.clean = clean;
-exports.build = build;
-exports.default = watch;
+export default watch;
