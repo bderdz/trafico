@@ -48,6 +48,10 @@
 		font-weight: 300;
 		line-height: 4rem;
 		margin-bottom: 70px;
+
+		@media (max-width: 1024px) {
+			max-width: 570px;
+		}
 	}
 
 	&__quote {

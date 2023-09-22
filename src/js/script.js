@@ -1,17 +1,22 @@
-// NavBar & Burger
-const useNavBar = () => {
+//* Mobile nav bar
+const useMobileNav = () => {
 	const burgerButton = document.querySelector(".burger__icon");
-	const navBar = document.querySelector(".header__nav");
+	const nav = document.querySelector(".header__nav");
 
-	// Toggle nav bar visability
-	const toggleNavBar = () => {
-		navBar.classList.toggle("header__nav_open");
+	// Toggle mobile nav visability
+	const toggleNav = () => {
+		const viewWidth = window.innerWidth;
 
-		// Switching body overflow for non-scroll effect
-		const bodyStyles = document.body.style;
-		bodyStyles.overflow
-			? (bodyStyles.overflow = "")
-			: (bodyStyles.overflow = "hidden");
+		if (viewWidth <= 768) {
+			nav.classList.toggle("header__nav_open");
+
+			// Changing body overflow style for scroll lock
+			const bodyStyles = document.body.style;
+
+			bodyStyles.overflow
+				? (bodyStyles.overflow = "")
+				: (bodyStyles.overflow = "hidden");
+		}
 	};
 
 	// Toggle burger icon
@@ -21,20 +26,47 @@ const useNavBar = () => {
 
 	burgerButton.addEventListener("click", () => {
 		toggleBurger();
-		toggleNavBar();
+		toggleNav();
 	});
 
-	// Auto closing after click on nav links
-	navBar.addEventListener("click", (event) => {
+	// Auto close after clicking on navigation links
+	nav.addEventListener("click", (event) => {
 		const target = event.target;
 
 		if (!target.classList.contains("nav")) {
 			toggleBurger();
-			toggleNavBar();
+			toggleNav();
 		}
 	});
 };
 
 window.addEventListener("DOMContentLoaded", () => {
-	useNavBar();
+	useMobileNav();
+
+	const clientsSlider = new Swiper(".clients__slider", {
+		direction: "horizontal",
+		spaceBetween: 20,
+		slidesOffsetAfter: 20,
+		slidesPerView: 2.2,
+		breakpoints: {
+			320: {
+				slidesPerView: 1.1,
+				spaceBetween: 20,
+			},
+			425: {
+				slidesPerView: 1.7,
+				spaceBetween: 30,
+				slidesOffsetAfter: 30,
+				centeredSlides: true,
+			},
+			768: {
+				slidesPerView: 2.2,
+				centeredSlides: false,
+			},
+		},
+		navigation: {
+			nextEl: ".clients__button-next",
+			prevEl: ".clients__button-prev",
+		},
+	});
 });

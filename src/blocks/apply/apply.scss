@@ -18,14 +18,14 @@
 	}
 
 	&__content {
-		order: 1;
+		order: 2;
 		display: flex;
 		flex-direction: column;
 		max-width: 455px;
 		gap: 40px;
 
 		@media (max-width: 1024px) {
-			order: 2;
+			max-width: 570px;
 		}
 	}
 
@@ -35,12 +35,8 @@
 	}
 
 	&__image {
-		order: 2;
+		order: 1;
 		width: clamp(250px, 50%, 487px);
 		height: fit-content;
-
-		@media (max-width: 1024px) {
-			order: 1;
-		}
 	}
 }

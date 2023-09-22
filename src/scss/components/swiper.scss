@@ -1,0 +1,31 @@
+.swiper {
+	margin-left: 0;
+	margin-right: 0;
+
+	&-button-prev,
+	&-button-next {
+		&::after {
+			content: none;
+		}
+	}
+
+	&-button-disabled {
+		opacity: 0.5;
+	}
+
+	&-slide {
+		opacity: 0.5;
+		transition: opacity 0.3s ease-in;
+
+		&-active,
+		&-next {
+			opacity: 1;
+		}
+
+		&-next {
+			@media (max-width: 768px) {
+				opacity: 0.5;
+			}
+		}
+	}
+}
