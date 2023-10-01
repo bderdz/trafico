@@ -1,4 +1,14 @@
 .apply {
+	margin-top: 260px;
+
+	@media (max-width: 768px) {
+		margin-top: 150px;
+	}
+
+	@media (max-width: 425px) {
+		margin-top: 100px;
+	}
+
 	&__container {
 		display: flex;
 		justify-content: center;
@@ -26,6 +36,7 @@
 
 		@media (max-width: 1024px) {
 			max-width: 570px;
+			gap: 20px;
 		}
 	}
 
@@ -36,7 +47,7 @@
 
 	&__image {
 		order: 1;
-		width: clamp(250px, 50%, 487px);
+		width: clamp(280px, 50%, 487px);
 		height: fit-content;
 	}
 }

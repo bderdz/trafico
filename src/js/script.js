@@ -40,8 +40,56 @@ const useMobileNav = () => {
 	});
 };
 
+const useAccordion = () => {
+	const wrapper = document.querySelector(".faq__content");
+	const accordions = document.querySelectorAll(".accordion");
+
+	const toggleAttributes = (header, content, expanded, hidden) => {
+		header.setAttribute("aria-expanded", expanded);
+		content.setAttribute("aria-hidden", hidden);
+	};
+
+	const toggleClass = (accordion, action) => {
+		switch (action) {
+			case "add":
+				accordion.classList.add("accordion_open");
+				break;
+			case "remove":
+				accordion.classList.remove("accordion_open");
+				break;
+			default:
+				break;
+		}
+	};
+
+	wrapper.addEventListener("click", (event) => {
+		const target = event.target;
+		const accordion = target.parentNode;
+		const content = target.parentNode.querySelector(".accordion__content");
+
+		if (target.classList.contains("accordion__header")) {
+			if (accordion.classList.contains("accordion_open")) {
+				return toggleClass(accordion, "remove");
+			}
+
+			accordions.forEach((accordion) => {
+				const header = accordion.querySelector(".accordion__header");
+				const content = accordion.querySelector(".accordion__content");
+
+				toggleClass(accordion, "remove");
+				toggleAttributes(header, content, false, true);
+			});
+
+			toggleClass(accordion, "add");
+			toggleAttributes(target, content, true, false);
+		}
+	});
+};
+
 window.addEventListener("DOMContentLoaded", () => {
 	useMobileNav();
+
+	useAccordion();
 
 	const clientsSlider = new Swiper(".clients__slider", {
 		direction: "horizontal",
@@ -54,8 +102,8 @@ window.addEventListener("DOMContentLoaded", () => {
 				spaceBetween: 20,
 			},
 			425: {
-				slidesPerView: 1.7,
-				spaceBetween: 30,
+				slidesPerView: 1.3,
+				spaceBetween: 20,
 				slidesOffsetAfter: 30,
 				centeredSlides: true,
 			},

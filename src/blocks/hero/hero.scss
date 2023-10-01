@@ -1,14 +1,5 @@
 .hero {
 	position: relative;
-	margin-bottom: 120px;
-
-	@media (max-width: 768px) {
-		margin-bottom: 120px;
-	}
-
-	@media (max-width: 425px) {
-		margin-bottom: 80px;
-	}
 
 	&__bg {
 		position: absolute;
@@ -19,7 +10,7 @@
 		max-width: 100vw;
 
 		& img {
-			max-width: 100%;
+			max-width: 1285px;
 			object-fit: cover;
 
 			@media (min-width: 1680px) {
@@ -53,9 +44,6 @@
 			text-align: center;
 			align-items: center;
 			gap: 30px;
-		}
-
-		@media (max-width: 425px) {
 		}
 	}
 

@@ -18,6 +18,7 @@
 	@media (max-width: 768px) {
 		font-size: 8.5px;
 	}
+
 	@media (max-width: 425px) {
 		font-size: 8px;
 	}
@@ -28,13 +29,22 @@ html {
 }
 
 body {
-	color: $text;
 	position: relative;
+	color: $text;
 	background-color: $body-bg;
 }
 
-section {
-	scroll-margin: 10rem;
+section,
+footer {
+	scroll-margin: 100px;
+
+	@media (max-width: 768px) {
+		scroll-margin: 50px;
+	}
+
+	@media (max-width: 425px) {
+		scroll-margin: 30px;
+	}
 }
 
 .container {
