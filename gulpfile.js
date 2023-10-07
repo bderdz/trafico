@@ -188,8 +188,8 @@ export function watchFiles() {
 }
 
 //* Main tasks
-const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
-const watch = gulp.parallel(build, server, watchFiles);
+export const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
+export const watch = gulp.parallel(build, server, watchFiles);
 
 //* Exports
 export default watch;
