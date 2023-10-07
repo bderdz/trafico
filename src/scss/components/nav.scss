@@ -6,15 +6,32 @@
 		@media (max-width: 1024px) {
 			gap: 50px;
 		}
-		@media (max-width: 768px) {
-		}
-		@media (max-width: 425px) {
-		}
 	}
 
 	&__link {
+		position: relative;
 		text-transform: uppercase;
 		font-family: $font-rubik;
+
+		&::before {
+			position: absolute;
+			content: "";
+			width: 0;
+			background: $white;
+			height: 2px;
+			bottom: -5px;
+			transition: width 0.25s ease-in;
+
+			@media (max-width: 768px) {
+				content: none;
+			}
+		}
+
+		&:hover {
+			&::before {
+				width: 100%;
+			}
+		}
 	}
 }
 

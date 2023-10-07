@@ -16,11 +16,17 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 100%;
-		background-color: $red;
+		background: $red;
+		transition: all 0.2s ease-out;
 
 		@media (max-width: 425px) {
 			width: 32px;
 			height: 32px;
+		}
+
+		&:hover {
+			box-shadow: 0px 3px 8px 0px rgba(238, 77, 71, 0.8);
+			transform: scale(1.2);
 		}
 	}
 }

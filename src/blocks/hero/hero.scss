@@ -16,6 +16,8 @@
 			@media (min-width: 1680px) {
 				width: 75vw;
 				max-width: none;
+				object-fit: fill;
+				height: 1000px;
 			}
 
 			@media (max-width: 768px) {
@@ -49,8 +51,12 @@
 
 	&__title {
 		color: $white;
-		max-width: 650px;
+
 		z-index: 5;
+
+		@media (min-width: 1680px) {
+			max-width: 800px;
+		}
 	}
 
 	&__button {

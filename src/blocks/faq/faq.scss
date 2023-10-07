@@ -73,6 +73,10 @@
 		margin-bottom: 80px;
 		z-index: 2;
 
+		@media (min-width: 1680px) {
+			max-width: 600px;
+		}
+
 		@media (max-width: 1024px) {
 			order: 2;
 			max-width: 570px;

@@ -30,6 +30,10 @@
 		gap: 40px;
 		max-width: 300px;
 
+		@media (min-width: 1680px) {
+			max-width: 400px;
+		}
+
 		@media (max-width: 1024px) {
 			max-width: 570px;
 			margin: 0 auto;
