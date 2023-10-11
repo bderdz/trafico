@@ -19,10 +19,12 @@
 				contact us for a quote today!
 			</p>
 
-			<form class="form footer__form">
+			<form
+				class="form footer__form"
+				id="contact-form">
 				<div class="form__block">
 					<label
-						for="name"
+						for="contact__name"
 						class="text text-xs form__label">
 						Name
 					</label>
@@ -30,14 +32,16 @@
 					<input
 						type="text"
 						name="name"
-						id="name"
+						id="contact__name"
 						placeholder="Your full name"
 						class="text text-s form__input" />
+
+					<p class="text form__error-message"></p>
 				</div>
 
 				<div class="form__block">
 					<label
-						for="email"
+						for="contact__email"
 						class="text text-xs form__label">
 						Email address
 					</label>
@@ -45,9 +49,10 @@
 					<input
 						type="email"
 						name="email"
-						id="email"
+						id="contact__email"
 						placeholder="Your email address"
 						class="text text-s form__input" />
+					<p class="text form__error-message"></p>
 				</div>
 				<button
 					type="submit"
@@ -100,7 +105,7 @@
 		</div>
 
 		<div class="footer__row">
-			<p class="text text-xs footer__copyright">Copyright @ 2019</p>
+			<p class="text text-xs footer__copyright">Copyright @ 2023</p>
 
 			<ul class="social__list">
 				<li class="social__item">

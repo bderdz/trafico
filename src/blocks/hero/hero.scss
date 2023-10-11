@@ -51,7 +51,7 @@
 
 	&__title {
 		color: $white;
-
+		max-width: 650px;
 		z-index: 5;
 
 		@media (min-width: 1680px) {

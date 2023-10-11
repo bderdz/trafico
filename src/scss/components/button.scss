@@ -8,6 +8,7 @@
 	width: fit-content;
 	transition: all 0.3s ease-out;
 	cursor: pointer;
+	user-select: none;
 
 	&-s {
 		padding: 20px 24px;
@@ -19,9 +20,23 @@
 			padding: 16px 20px;
 		}
 
-		&:hover {
-			transform: scale(0.94);
-			box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+		@media (hover: hover) {
+			&:hover {
+				transform: scale(0.94);
+				box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+			}
+
+			&:active {
+				transform: scale(0.84);
+				box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+			}
+		}
+
+		@media (hover: none) {
+			&:active {
+				transform: scale(0.9);
+				box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+			}
 		}
 	}
 
@@ -53,14 +68,33 @@
 			transform: translateY(-50%) rotate(90deg);
 		}
 
-		&:hover {
-			transform: scale(0.96);
-			background-color: $primary-red;
-			color: $white;
+		@media (hover: hover) {
+			&:hover {
+				transform: scale(0.96);
+				background-color: $primary-red;
+				color: $white;
 
-			&::before,
-			&::after {
-				background-color: $white;
+				&::before,
+				&::after {
+					background-color: $white;
+				}
+			}
+
+			&:active {
+				transform: scale(0.9);
+			}
+		}
+
+		@media (hover: none) {
+			&:active {
+				transform: scale(0.96);
+				background-color: $primary-red;
+				color: $white;
+
+				&::before,
+				&::after {
+					background-color: $white;
+				}
 			}
 		}
 

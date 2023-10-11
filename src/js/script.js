@@ -1,5 +1,5 @@
 //* Mobile nav bar
-const useMobileNav = () => {
+const mobileNav = () => {
 	const burgerButton = document.querySelector(".burger__icon");
 	const nav = document.querySelector(".header__nav");
 
@@ -40,7 +40,8 @@ const useMobileNav = () => {
 	});
 };
 
-const useAccordion = () => {
+//* Accordion component
+const accordion = () => {
 	const wrapper = document.querySelector(".faq__content");
 	const accordions = document.querySelectorAll(".accordion");
 
@@ -86,10 +87,85 @@ const useAccordion = () => {
 	});
 };
 
-window.addEventListener("DOMContentLoaded", () => {
-	useMobileNav();
+//* Form
+const contactForm = () => {
+	const form = document.querySelector("#contact-form"),
+		name = document.querySelector("#contact__name"),
+		email = document.querySelector("#contact__email");
 
-	useAccordion();
+	const setValidationStatus = (input, message, isInvalid) => {
+		const errorFiled = input.parentElement.querySelector(".form__error-message");
+		errorFiled.innerHTML = message;
+
+		if (isInvalid) {
+			input.classList.add("form__input_invalid");
+		} else {
+			input.classList.remove("form__input_invalid");
+		}
+	};
+
+	const validateField = (input, value) => {
+		if (value.length === 0) {
+			setValidationStatus(input, "Field cannot be empty", true);
+
+			return false;
+		}
+
+		if (input.type === "email") {
+			const emailRegex = /^[a-z0-9][a-z0-9._]+[a-z0-9]@[a-z0-9_.]+\.[a-z]{2,}$/;
+
+			if (!emailRegex.test(value.toLowerCase())) {
+				setValidationStatus(input, "Incorrect email address", true);
+
+				return false;
+			}
+		}
+
+		return true;
+	};
+
+	name.addEventListener("blur", (e) => {
+		const target = e.target;
+
+		validateField(target, target.value);
+	});
+
+	name.addEventListener("focus", (e) => {
+		const target = e.target;
+
+		setValidationStatus(target, "", false);
+	});
+
+	email.addEventListener("blur", (e) => {
+		const target = e.target;
+
+		validateField(target, target.value);
+	});
+
+	email.addEventListener("focus", (e) => {
+		const target = e.target;
+
+		setValidationStatus(target, "", false);
+	});
+
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		const nameValue = name.value;
+		const emailValue = email.value;
+
+		if (validateField(name, nameValue) && validateField(email, emailValue)) {
+			console.log(`name: ${nameValue}\nemail: ${emailValue}`);
+		}
+	});
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+	mobileNav();
+
+	accordion();
+
+	contactForm();
 
 	const clientsSlider = new Swiper(".clients__slider", {
 		direction: "horizontal",
