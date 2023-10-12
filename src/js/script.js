@@ -91,7 +91,8 @@ const accordion = () => {
 const contactForm = () => {
 	const form = document.querySelector("#contact-form"),
 		name = document.querySelector("#contact__name"),
-		email = document.querySelector("#contact__email");
+		email = document.querySelector("#contact__email"),
+		success = document.querySelector(".form__success");
 
 	const setValidationStatus = (input, message, isInvalid) => {
 		const errorFiled = input.parentElement.querySelector(".form__error-message");
@@ -156,6 +157,13 @@ const contactForm = () => {
 
 		if (validateField(name, nameValue) && validateField(email, emailValue)) {
 			console.log(`name: ${nameValue}\nemail: ${emailValue}`);
+
+			form.reset();
+			success.classList.add("form__success_active");
+
+			setTimeout(() => {
+				success.classList.remove("form__success_active");
+			}, 3000);
 		}
 	});
 };

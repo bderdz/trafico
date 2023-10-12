@@ -10,6 +10,10 @@
 	cursor: pointer;
 	user-select: none;
 
+	@media (hover: none) {
+		transition: all 0.15s ease-out;
+	}
+
 	&-s {
 		padding: 20px 24px;
 		border-radius: 5px;
