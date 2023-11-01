@@ -202,7 +202,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		},
 	});
 
-	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+	gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
 
 	if (ScrollTrigger.isTouch !== 1) {
 		ScrollSmoother.create({
@@ -210,6 +210,20 @@ window.addEventListener("DOMContentLoaded", () => {
 			content: ".content",
 			smooth: 1.3,
 			effects: true,
+		});
+
+		document.querySelectorAll("#nav__link").forEach((link) => {
+			link.addEventListener("click", (event) => {
+				event.preventDefault();
+
+				const scrollTo = link.getAttribute("href");
+
+				gsap.to(window, {
+					duration: 1,
+					delay: 0,
+					scrollTo: { y: scrollTo, offsetY: 50 },
+				});
+			});
 		});
 
 		gsap.fromTo(
