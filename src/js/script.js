@@ -221,6 +221,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				gsap.to(window, {
 					duration: 1,
 					delay: 0,
+					ease: "power1.inOut",
 					scrollTo: { y: scrollTo, offsetY: 50 },
 				});
 			});
