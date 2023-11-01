@@ -34,9 +34,11 @@ const path = {
 		js: distPath + "js/",
 		img: distPath + "img/",
 		fonts: distPath + "fonts/",
+		libs: distPath + "libs/",
 	},
 	src: {
 		html: srcPath + "*.html",
+		libs: srcPath + "libs/**/*",
 		css: srcPath + "scss/style.scss",
 		js: srcPath + "js/script.js",
 		img: srcPath + "img/**/*.{png,jpg,svg,gif,ico,webp}",
@@ -48,6 +50,7 @@ const path = {
 		js: srcPath + "js/*.js",
 		img: srcPath + "img/**/*.{png,jpg,svg,gif,ico,webp}",
 		fonts: srcPath + "fonts/**/*.{eot,woff,woff2,ttf,svg}",
+		libs: srcPath + "libs/**/*",
 	},
 	clean: distPath,
 };
@@ -146,6 +149,14 @@ export function js() {
 		.pipe(browserSync.stream());
 }
 
+//* libs
+export function libs() {
+	return gulp
+		.src(path.src.libs, { allowEmpty: true })
+		.pipe(gulp.dest(path.build.libs))
+		.pipe(browserSync.stream());
+}
+
 //* IMG
 export function images() {
 	return gulp
@@ -185,10 +196,14 @@ export function watchFiles() {
 	gulp.watch([path.watch.js], js);
 	gulp.watch([path.watch.img], images);
 	gulp.watch([path.watch.fonts], fonts);
+	gulp.watch([path.watch.libs], libs);
 }
 
 //* Main tasks
-export const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
+export const build = gulp.series(
+	clean,
+	gulp.parallel(html, css, js, images, fonts, libs)
+);
 export const watch = gulp.parallel(build, server, watchFiles);
 
 //* Exports

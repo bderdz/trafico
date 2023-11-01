@@ -50,30 +50,38 @@
 			href="./css/style.min.css" />
 	</head>
 	<body>
-		<!-- Header -->
-		@@include("./blocks/header/header.html")
+		<div class="wrapper">
+			<div class="content">
+				<!-- Header -->
+				@@include("./blocks/header/header.html")
 
-		<!-- Hero -->
-		@@include("./blocks/hero/hero.html")
+				<!-- Hero -->
+				@@include("./blocks/hero/hero.html")
 
-		<!-- About -->
-		@@include("./blocks/about/about.html")
+				<!-- About -->
+				@@include("./blocks/about/about.html")
 
-		<!-- How to apply -->
-		@@include("./blocks/apply/apply.html")
+				<!-- How to apply -->
+				@@include("./blocks/apply/apply.html")
 
-		<!-- Faq -->
-		@@include("./blocks/faq/faq.html")
+				<!-- Faq -->
+				@@include("./blocks/faq/faq.html")
 
-		<!-- Our Clients -->
-		@@include("./blocks/clients/clients.html")
+				<!-- Our Clients -->
+				@@include("./blocks/clients/clients.html")
 
-		<!-- Footer -->
-		@@include("./blocks/footer/footer.html")
+				<!-- Footer -->
+				@@include("./blocks/footer/footer.html")
+			</div>
+		</div>
 
 		<!-- SwiperJS -->
 		<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+		<!-- GSAP -->
+		<script src="./libs/gsap/gsap.min.js"></script>
+		<script src="./libs/gsap/ScrollTrigger.min.js"></script>
+		<script src="./libs/gsap/ScrollSmoother.min.js"></script>
 		<!-- Main JS -->
 		<script
 			type="module"

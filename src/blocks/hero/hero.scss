@@ -8,6 +8,7 @@
 		left: 0;
 		overflow-x: hidden;
 		max-width: 100vw;
+		will-change: transform;
 
 		& img {
 			max-width: 1285px;
@@ -53,6 +54,7 @@
 		color: $white;
 		max-width: 650px;
 		z-index: 5;
+		will-change: transform;
 
 		@media (min-width: 1680px) {
 			max-width: 800px;
@@ -62,6 +64,7 @@
 	&__button {
 		font-weight: 700;
 		letter-spacing: 0.08rem;
+		will-change: transform;
 	}
 
 	&__scene {
@@ -69,6 +72,7 @@
 		right: 240px;
 		bottom: -345px;
 		z-index: -1;
+		will-change: transform;
 
 		@media (max-width: 1440px) {
 			right: 150px;
@@ -123,6 +127,7 @@
 		z-index: 4;
 		margin-top: 180px;
 		transform: translateX(-211px);
+		will-change: transform;
 
 		@media (max-width: 1024px) {
 			margin-top: 100px;

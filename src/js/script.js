@@ -201,4 +201,96 @@ window.addEventListener("DOMContentLoaded", () => {
 			prevEl: ".clients__button-prev",
 		},
 	});
+
+	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+	if (ScrollTrigger.isTouch !== 1) {
+		ScrollSmoother.create({
+			wrapper: ".wrapper",
+			content: ".content",
+			smooth: 1.3,
+			effects: true,
+		});
+	}
+
+	gsap.fromTo(
+		".hero__container",
+		{ opacity: 1 },
+		{
+			opacity: 0,
+			scrollTrigger: {
+				trigger: ".hero__container",
+				start: "center",
+				end: "1100",
+				scrub: true,
+			},
+		}
+	);
+
+	gsap.fromTo(
+		".hero__truck",
+		{ opacity: 0, x: -300 },
+		{
+			opacity: 1,
+			x: 0,
+			scrollTrigger: {
+				trigger: ".hero__truck",
+				start: "-1000",
+				end: "-100",
+				scrub: true,
+			},
+		}
+	);
+
+	gsap.fromTo(
+		".hero__truck",
+		{ opacity: 1 },
+		{
+			opacity: 0,
+			scrollTrigger: {
+				trigger: ".hero__truck",
+				start: "200",
+				end: "400",
+				scrub: true,
+			},
+		}
+	);
+
+	const leftContent = gsap.utils.toArray(".left__content");
+
+	leftContent.forEach((item) => {
+		gsap.fromTo(
+			item,
+			{ opacity: 0, x: -100 },
+			{
+				opacity: 1,
+				x: 0,
+				scrollTrigger: {
+					trigger: item,
+					start: "-850",
+					end: "-150",
+					scrub: true,
+				},
+			}
+		);
+	});
+
+	const rightContent = gsap.utils.toArray(".right__content");
+
+	rightContent.forEach((item) => {
+		gsap.fromTo(
+			item,
+			{ opacity: 0, x: 100 },
+			{
+				opacity: 1,
+				x: 0,
+				scrollTrigger: {
+					trigger: item,
+					start: "-850",
+					end: "-150",
+					scrub: true,
+				},
+			}
+		);
+	});
 });

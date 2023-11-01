@@ -53,6 +53,11 @@ footer {
 	padding: 0 20px;
 }
 
+.right__content,
+.left__content {
+	will-change: transform;
+}
+
 /* 
 
 * Breakpoints for project
